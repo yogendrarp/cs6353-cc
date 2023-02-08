@@ -62,8 +62,8 @@ floating_point = {digit}+\.{digit}+
 character = \'[^\'\\]\'
 string = \"(\\.|[^\"])*\"
 whitespace = [ \n\t\r]
-inlinecomment = \\\\.*((\r\n)|\n)
-multilinecomment = \\\*[\s\S]*?\*\/
+inlinecomment = \\\\[^\n\r]+
+multilinecomment = \\\*[\s\S]*?\*\\
 %%
 /**
  * LEXICAL RULES:
