@@ -49,5 +49,8 @@ terminal ID; //43
 terminal INTEGERLIT; //44
 terminal CHARACTERLIT; //45
 terminal FLOATLIT; //46
+terminal STRINGLIT; //47
+
+
 non terminal dummy;
 dummy ::= ;

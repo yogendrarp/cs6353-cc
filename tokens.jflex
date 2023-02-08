@@ -117,10 +117,10 @@ return              { return newSym(sym.RETURN, "return"); }
 {id}                { return newSym(sym.ID, yytext()); }
 {integer}           { return newSym(sym.INTEGERLIT, new Integer(yytext())); }
 {character}         { return newSym(sym.CHARACTERLIT, yytext()); }
-{floating_point}    { return newSym(sym.FLOATLIT, new Double(yytext())); }
+{floating_point}    { return newSym(sym.FLOATLIT, Double.valueOf(yytext())); }
 {inlinecomment}     { /* Ignore comment */ }
 {multilinecomment}  { /* Ignore comment */ }
-{string}            { return newSym(sym.STRING, yytext()); }
+{string}            { return newSym(sym.STRINGLIT, yytext()); }
 
 {whitespace}    { /* Ignore whitespace. */ }
 .               { System.out.println("Illegal char, '" + yytext() +
