@@ -4,6 +4,6 @@ import java_cup.runtime.*;
 /**
 Place Terminals Here
 */
-
+terminal CLASS; //2
 non terminal dummy;
 dummy ::= ;

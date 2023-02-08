@@ -54,9 +54,13 @@ Symbol newSym(int tokenId, Object value) {
  * Implement patterns as regex here
  */
 
+letter = [a-zA-Z]
+digit = [0-9]
+integer = 0 | [1-9]{digit}*
+floating_point = {digit}+\.{digit}+
+character = \'[^\'\\]\'
+string = \"(\\.|[^\"])*\"
 whitespace = [ \n\t\r]
-
-
 
 %%
 /**
@@ -66,6 +70,9 @@ whitespace = [ \n\t\r]
 /**
  * Implement terminals here, ORDER MATTERS!
  */
+
+class    { return newSym(sym.CLASS); }
+final    { return newSym(sym.FINAL); }
  
 {whitespace}    { /* Ignore whitespace. */ }
 .               { System.out.println("Illegal char, '" + yytext() +
