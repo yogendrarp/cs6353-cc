@@ -118,8 +118,12 @@ return              { return newSym(sym.RETURN, "return"); }
 {integer}           { return newSym(sym.INTEGERLIT, new Integer(yytext())); }
 {character}         { return newSym(sym.CHARACTERLIT, yytext()); }
 {floating_point}    { return newSym(sym.FLOATLIT, Double.valueOf(yytext())); }
-{inlinecomment}     { /* Ignore comment */ }
-{multilinecomment}  { /* Ignore comment */ }
+{inlinecomment}     { return newSym(sym.INLINECOMMENT, yytext().substring(2)); }
+{multilinecomment}  { 
+                        String _text = yytext();
+                        int length = _text.length();
+                        return newSym(sym.MULTILINECOMMENT, _text.substring(2, length-2));
+                    }
 {string}            { return newSym(sym.STRINGLIT, yytext()); }
 
 {whitespace}    { /* Ignore whitespace. */ }
