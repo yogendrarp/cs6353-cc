@@ -1,6 +1,5 @@
 import java.io.*;
 
-import java_cup.Lexer;
 import java_cup.runtime.*;
 
 public class LexerTest{
