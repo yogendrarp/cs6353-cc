@@ -48,6 +48,6 @@ terminal RBOXBRACKET; //42
 terminal ID; //43
 terminal INTEGERLIT; //44
 terminal CHARACTERLIT; //45
-
+terminal FLOATLIT; //46
 non terminal dummy;
 dummy ::= ;
