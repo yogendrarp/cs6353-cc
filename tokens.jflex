@@ -121,6 +121,7 @@ return              { return newSym(sym.RETURN, "return"); }
 {inlinecomment}     { return newSym(sym.INLINECOMMENT, yytext().substring(2)); }
 {multilinecomment}  { 
                         String _text = yytext();
+                        _text = _text.replaceAll("\n","");
                         int length = _text.length();
                         return newSym(sym.MULTILINECOMMENT, _text.substring(2, length-2));
                     }
