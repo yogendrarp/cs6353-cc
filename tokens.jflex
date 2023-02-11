@@ -56,7 +56,7 @@ Symbol newSym(int tokenId, Object value) {
 
 letter = [a-zA-Z]
 digit = [0-9]
-integer = 0 | [1-9]{digit}*
+integer = {digit}+
 id = {letter}| ({letter}|{digit})*
 floating_point = {digit}+\.{digit}+
 character = \'[^\'\\]\'
@@ -114,12 +114,17 @@ return              { return newSym(sym.RETURN, "return"); }
 "}"                 { return newSym(sym.RCURBRACKET, "}"); }
 "["                 { return newSym(sym.LBOXBRACKET, "["); }
 "]"                 { return newSym(sym.RBOXBRACKET, "]"); }
-{id}                { return newSym(sym.ID, yytext()); }
 {integer}           { return newSym(sym.INTEGERLIT, new Integer(yytext())); }
+{id}                { return newSym(sym.ID, yytext()); }
 {character}         { return newSym(sym.CHARACTERLIT, yytext()); }
 {floating_point}    { return newSym(sym.FLOATLIT, Double.valueOf(yytext())); }
-{inlinecomment}     { /* Ignore comment */ }
-{multilinecomment}  { /* Ignore comment */ }
+{inlinecomment}     { return newSym(sym.INLINECOMMENT, yytext().substring(2)); }
+{multilinecomment}  { 
+                        String _text = yytext();
+                        _text = _text.replaceAll("\n","");
+                        int length = _text.length();
+                        return newSym(sym.MULTILINECOMMENT, _text.substring(2, length-2));
+                    }
 {string}            { return newSym(sym.STRINGLIT, yytext()); }
 
 {whitespace}    { /* Ignore whitespace. */ }
