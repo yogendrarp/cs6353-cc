@@ -90,6 +90,7 @@ print               { return newSym(sym.PRINT, "print"); }
 printline           { return newSym(sym.PRINTLINE, "printline"); }
 return              { return newSym(sym.RETURN, "return"); }
 "="                 { return newSym(sym.ASSIGN, "="); }
+","                 { return newSym(sym.COMMA, ","); }
 ";"                 { return newSym(sym.SEMICOLON, ";"); }
 "~"                 { return newSym(sym.NEGATION, "~"); }
 "?"                 { return newSym(sym.QUESTION, "?"); }
