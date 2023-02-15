@@ -114,7 +114,7 @@ return              { return newSym(sym.RETURN, "return"); }
 "}"                 { return newSym(sym.RCURBRACKET, "}"); }
 "["                 { return newSym(sym.LBOXBRACKET, "["); }
 "]"                 { return newSym(sym.RBOXBRACKET, "]"); }
-{integer}           { return newSym(sym.INTEGERLIT, new Integer(yytext())); }
+{integer}           { return newSym(sym.INTEGERLIT, Integer.parseInt(yytext())); }
 {id}                { return newSym(sym.ID, yytext()); }
 {character}         { return newSym(sym.CHARACTERLIT, yytext()); }
 {floating_point}    { return newSym(sym.FLOATLIT, Double.valueOf(yytext())); }
